@@ -4,10 +4,10 @@ metadata:
   creationTimestamp: null
   name: promagent-operator
 rules:
-- apiGroups:
-  - ""
+- apiGroups: [""] # "" indicates the core API group
   resources:
   - pods
+  - pods/exec
   - services
   - endpoints
   - persistentvolumeclaims

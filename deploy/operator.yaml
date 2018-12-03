@@ -16,7 +16,7 @@ spec:
       containers:
         - name: promagent-operator
           # Replace this with the built image name
-          image: REPLACE_IMAGE
+          image: fstab/promagent-operator
           ports:
           - containerPort: 60000
             name: metrics
@@ -33,7 +33,7 @@ spec:
             failureThreshold: 1
           env:
             - name: WATCH_NAMESPACE
-              value: ""
+              value: "default"
             - name: POD_NAME
               valueFrom:
                 fieldRef:

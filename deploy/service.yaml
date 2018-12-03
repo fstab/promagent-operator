@@ -1,0 +1,14 @@
+kind: Service
+apiVersion: v1
+metadata:
+  name: promagent
+  labels:
+    app: promagent
+spec:
+  selector:
+    promagent-state: instrumented
+  ports:
+  - name: metrics
+    port: 9300
+    targetPort: 9300
+  clusterIP: None

@@ -1,0 +1,21 @@
+# The ServiceMonitor custom resource is defined by the CoreOS prometheus-operator.
+# See https://github.com/coreos/prometheus-operator for more info.
+# If you installed Prometheus via the prometheus-operator, use this to configure
+# service discovery to get the promagent metrics.
+# If you installed Prometheus without the prometheus-operator, you need to
+# configure the Prometheus service discovery manually.
+
+apiVersion: monitoring.coreos.com/v1
+kind: ServiceMonitor
+metadata:
+  name: promagent
+  namespace: monitoring
+spec:
+  endpoints:
+  - port: metrics
+    interval: 30s
+  namespaceSelector:
+    matchNames: [ 'default' ]
+  selector:
+    matchLabels:
+      app: promagent
