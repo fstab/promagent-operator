@@ -1,0 +1,7 @@
+apiVersion: promagent.io/v1alpha1
+kind: Promagent
+metadata:
+  name: example-promagent
+spec:
+  # Add fields here
+  size: 3
