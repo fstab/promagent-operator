@@ -75,10 +75,11 @@ curl <pod-ip>:9300/metrics
 Prometheus service discovery uses the Kubernetes endpoints to find the pods to be scraped. Depending on how Prometheus was installed, there are different options how to configure this. If Prometheus was installed using CoreOS's [prometheus-operator](https://github.com/coreos/prometheus-operator/), a `ServiceMonitor` custom resource is used to configure the new endpoints:
 
 ```
-export DEPLOY_DIR=https://raw.githubusercontent.com/fstab/promagent-operator/master/deploy/
-
-kubectl create -f $DEPLOY_DIR/service_monitor.yaml
+curl -LO https://raw.githubusercontent.com/fstab/promagent-operator/master/deploy/service_monitor.yaml
+kubectl create -f service_monitor.yaml
 ```
+
+_Note: It seems the prometheus-operator does not reconfigure the running prometheus instances. In order to make them pick up the new configuration, restart them with `kubectl -n monitoring delete pod prometheus-k8s-{0,1}`._
 
 Troubleshooting
 ---------------
