@@ -79,7 +79,7 @@ curl -LO https://raw.githubusercontent.com/fstab/promagent-operator/master/deplo
 kubectl create -f service_monitor.yaml
 ```
 
-_Note: It seems the prometheus-operator does not reconfigure the running prometheus instances. In order to make them pick up the new configuration, restart them with `kubectl -n monitoring delete pod prometheus-k8s-{0,1}`._
+_Note: It seems the prometheus-operator does not reconfigure the running prometheus instances. In order to make them pick up the new configuration, either restart them with `kubectl -n monitoring delete pod prometheus-k8s-{0,1}`, or trigger the [prometheus reload](https://www.robustperception.io/reloading-prometheus-configuration) for each pod._
 
 Troubleshooting
 ---------------
